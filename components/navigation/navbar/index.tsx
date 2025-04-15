@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
+import Theme from './Theme'
 
 
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
       </Link>
       <p>Global Search</p>
 
-      <div className="text-color-red">Theme</div>
+      <div className="text-primary-500"><Theme /></div>
       </nav>
   )
 }
