@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/lib/auth";
+import { auth } from "@/auth";
 
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
@@ -27,15 +27,12 @@ export const metadata: Metadata = {
   },
 };
 
-const RootLayout = ({ children,
-}: {
-  children: ReactNode;
-}) => {
-  const session = await auth();
+const RootLayout = async ({ children,}: { children: React.ReactNode;}) => {
+    const session = await auth();
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <SessionProvider>
+      <SessionProvider session={session}>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}
       >
